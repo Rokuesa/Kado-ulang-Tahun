@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Selamat Ulang Tahun</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f2f4f8;
+      font-family: 'Georgia', serif;
+      color: #333;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-top: 60px;
+      font-size: 3em;
+      color: #5c5470;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: 20px auto;
+      color: #555;
+    }
+
+    .audio-button {
+      background-color: #a3c9a8;
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1em;
+      margin: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .audio-button:hover {
+      background-color: #8bb08b;
+    }
+
+    .gift-box {
+      font-size: 4em;
+      cursor: pointer;
+      transition: transform 0.3s;
+      margin: 30px auto 0;
+    }
+
+    .gift-box:hover {
+      transform: scale(1.1);
+    }
+
+    .surprise-message {
+      display: none;
+      font-size: 1.4em;
+      margin-top: 20px;
+      color: #444;
+      background: #eaf4f4;
+      padding: 15px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .balloon {
+      position: absolute;
+      width: 30px;
+      height: 45px;
+      background-color: #a3c9a8;
+      border-radius: 50% 50% 45% 45%;
+      opacity: 0.7;
+      animation: float 10s linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-120vh); }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      font-size: 0.9em;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎂 Selamat Ulang Tahun, Dini</h1>
+  <p>Semoga Bahagia Selalu dan yaa itu jee bahagia selalu, ohh kadonya jangan lupa di klik yaa. 🦄</p>
+
+  <div class="gift-box" onclick="openGift()">🎁</div>
+  <div id="surprise" class="surprise-message">✨ Hadiahnya ini jee, sye lagi belajar ngoding jadi pake koding aja kasih kadonya! hehe</div>
+
+  <button class="audio-button" onclick="toggleAudio()">🎶klik ini din!</button>
+
+  <audio id="birthdayAudio" loop>
+    <source src="youll be in.mp3" type="audio/mpeg">
+  </audio>
+
+  <footer>
+    Dibuat oleh abang kelas mu
+  </footer>
+
+  <script>
+    const pastelColors = ['#a3c9a8', '#c9ccd5', '#f7d9d9', '#d5b9b2', '#e2ece9'];
+    for (let i = 0; i < 20; i++) {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.style.left = Math.random() * 100 + 'vw';
+      balloon.style.backgroundColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
+      balloon.style.animationDuration = (8 + Math.random() * 5) + 's';
+      document.body.appendChild(balloon);
+    }
+
+    const audio = document.getElementById('birthdayAudio');
+    const button = document.querySelector('.audio-button');
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+        button.textContent = '⏸️ Hentikan Musik';
+      } else {
+        audio.pause();
+        button.textContent = '🎵 Putar Musik';
+      }
+    }
+
+    function openGift() {
+      document.getElementById('surprise').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
